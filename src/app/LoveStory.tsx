@@ -68,14 +68,14 @@ const TimelineItem = ({ src, date, caption, index }: TimelineItemProps) => {
           isEven ? "md:order-last" : "md:order-first"
         }`}
       >
-        <div className="bg-white p-3 pb-8 shadow-xl rotate-1 hover:rotate-0 transition-transform duration-500 border border-slate-100 max-w-[300px] mx-auto relative group">
+        <div className="bg-white p-3 pb-8 shadow-xl rotate-1 hover:rotate-0 transition-transform duration-500 border border-slate-100 max-w-75 mx-auto relative group">
           <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-24 h-6 bg-rose-100/50 -rotate-1" />
           <div className="relative aspect-square bg-slate-100 mb-4 overflow-hidden">
             <Image
               src={src}
               alt={caption}
               fill
-              className="object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-500"
+              className="object-cover grayscale-20 group-hover:grayscale-0 transition-all duration-500"
             />
           </div>
           <p className="font-handwriting text-2xl text-center text-slate-800">
@@ -97,9 +97,6 @@ export default function ValentineJourneySafe() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [step]);
   const [noPos, setNoPos] = useState({ x: 0, y: 0 });
-  const [surprisePos, setSurprisePos] = useState({ x: 0, y: 0 });
-  const [surpriseRevealed, setSurpriseRevealed] = useState(false);
-  const [surpriseCount, setSurpriseCount] = useState(0);
 
   const moveNoButton = () => {
     setNoPos({
@@ -108,35 +105,29 @@ export default function ValentineJourneySafe() {
     });
   };
 
-  const moveSurpriseButton = () => {
-    if (surpriseCount < 5) {
-      setSurprisePos({
-        x: Math.random() * 160 - 80,
-        y: Math.random() * 160 - 80,
-      });
-      setSurpriseCount((prev) => prev + 1);
-    }
-  };
-
   const timelineData = [
-    { src: "/1.jpeg", date: "16 Dec, 2025", caption: "The First Meet Up ☕️" },
-    { src: "/2.jpeg", date: "10 Jan, 2026", caption: "Our first cosy pic" },
     {
-      src: "/3.jpeg",
+      src: "/pic1.jpeg",
+      date: "16 Dec, 2025",
+      caption: "The First Meet Up ☕️",
+    },
+    { src: "/pic2.jpeg", date: "10 Jan, 2026", caption: "Our first cosy pic" },
+    {
+      src: "/pic3.jpeg",
       date: "15 Jan, 2026",
-      caption: "Our first theatre date 🎭",
+      caption: "Our first gold reef date",
     },
     {
-      src: "/4.jpeg",
+      src: "/pic4.jpeg",
       date: "24 Jan, 2026",
-      caption: "My favourite picture of you. You areeeeeee myyy 🎤",
+      caption: "My favourite picture of you.",
     },
-    { src: "/5.jpeg", date: "7 Feb, 2026", caption: "our first baecation 🏖️" },
-    { src: "/6.jpeg", date: "8 Feb, 2026", caption: "Our first horse riding" },
+    { src: "/pic5.jpeg", date: "7 Feb, 2026", caption: "our first RYC absa" },
+    { src: "/pic6.jpeg", date: "8 Feb, 2026", caption: "Sleeping beauty" },
   ];
 
   return (
-    <div className="min-h-screen bg-[#fcfafb] text-slate-900 overflow-x-hidden font-sans selection:bg-rose-200 bg-[radial-gradient(#ffe4e6_1px,transparent_1px)] [background-size:20px_20px]">
+    <div className="min-h-screen bg-[#fcfafb] text-slate-900 overflow-x-hidden font-sans selection:bg-rose-200 bg-[radial-gradient(#ffe4e6_1px,transparent_1px)] bg-size-[20px_20px]">
       <style jsx global>{`
         @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@400;600&display=swap");
         .font-handwriting {
@@ -160,14 +151,14 @@ export default function ValentineJourneySafe() {
             exit={{ opacity: 0, y: -20 }}
             className="min-h-screen flex items-center justify-center p-4 relative z-20"
           >
-            <div className="w-full max-w-[420px] bg-white rounded-[3rem] shadow-[0_20px_60px_rgba(0,0,0,0.08)] overflow-hidden border border-rose-50 flex flex-col">
+            <div className="w-full max-w-105 bg-white rounded-[3rem] shadow-[0_20px_60px_rgba(0,0,0,0.08)] overflow-hidden border border-rose-50 flex flex-col">
               <div className="relative h-32 bg-[#fff1f3] flex justify-center items-end">
-                <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(#ffccd5_1px,transparent_1px)] [background-size:15px_15px] opacity-20" />
+                <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(#ffccd5_1px,transparent_1px)] bg-size-[15px_15px] opacity-20" />
                 <div className="relative translate-y-1/2">
                   <div className="w-24 h-24 rounded-full border-4 border-white shadow-md overflow-hidden bg-rose-100 relative">
                     <Image
-                      src="/4.jpeg"
-                      alt="Mama Ona"
+                      src="/pic4.jpeg"
+                      alt="Snow"
                       fill
                       className="object-cover"
                     />
@@ -186,34 +177,33 @@ export default function ValentineJourneySafe() {
                 </span>
                 <h1 className="text-3xl font-serif font-bold text-slate-800 leading-tight">
                   Happy Valentine's Day, <br />
-                  <span className="text-rose-500 italic">Mama Ona</span>
+                  <span className="text-rose-500 italic">Snow</span>
                 </h1>
                 <div className="my-4 flex items-center justify-center gap-3">
-                  <div className="h-[1px] w-8 bg-rose-100" />
+                  <div className="h-px w-8 bg-rose-100" />
                   <span className="text-rose-300 text-xs">♥</span>
-                  <div className="h-[1px] w-8 bg-rose-100" />
+                  <div className="h-px w-8 bg-rose-100" />
                 </div>
 
-                <div className="text-sm text-slate-500 leading-relaxed space-y-4 mb-10 max-w-[300px]">
-                  <p>Kgaogelo Makoe “Mama Ona “</p>
-                  <p>
-                    I’m sure you thought I forgot to ask you to be my valentine,
-                    but oshapile fatshe unfortunately 😆
+                <div className="text-sm text-slate-500 leading-relaxed space-y-4 mb-10 max-w-75">
+                  <p className="font-semibold text-slate-800">
+                    Winnie Masoabela “Snow“
                   </p>
                   <p>
-                    From the first concert we met until coastline at harties 🌊,
-                    every moment with you has felt like a blast.
-                    <br />
-                    This is how I perfectly imagined romance to feel like.
+                    It’s Friday the 13th. A very unlucky day for most but not
+                    for you. Why? Because I love you.
                   </p>
-                  <p>I wish you could see yourself the way I see you ✨</p>
-                  <p>With that being said will you be my valentine ?</p>
-                  <p className="font-bold">Love. Papa Ona ❤️</p>
+                  <p>
+                    Since the first day we spoke, I sensed your calm and gentle
+                    nature. We first met on Human Rights day and there and then
+                    I knew you were the right human for me. 🥺
+                  </p>
+                  <p>Would you do me the honour of being my Valentine?</p>
+                  <p className="font-bold text-rose-500 text-base">
+                    Skhumba ❤️
+                  </p>
                 </div>
 
-                <h2 className="text-xl font-serif font-bold text-slate-800 mb-8">
-                  Will you be my Valentine?
-                </h2>
                 <div className="w-full space-y-4 relative flex flex-col items-center">
                   <motion.button
                     whileHover={{ scale: 1.02 }}
@@ -234,7 +224,6 @@ export default function ValentineJourneySafe() {
                 </div>
               </div>
 
-              {/* Designer Card Footer: Non-clickable journey preview to enforce the YES interaction */}
               <div className="bg-slate-50/50 p-6 border-t border-slate-50 flex flex-col items-center">
                 <p className="text-[9px] text-slate-400 uppercase tracking-widest mb-4">
                   A journey waiting for you...
@@ -249,7 +238,7 @@ export default function ValentineJourneySafe() {
                         src={item.src}
                         alt="thumb"
                         fill
-                        className="object-cover grayscale-[50%]"
+                        className="object-cover grayscale-50"
                       />
                     </div>
                   ))}
@@ -309,13 +298,13 @@ export default function ValentineJourneySafe() {
                 <div className="grid grid-cols-1 gap-6 text-left mb-12">
                   <div className="flex justify-between items-center p-4 bg-rose-50/50 rounded-2xl">
                     <span className="text-sm font-semibold text-slate-500 uppercase tracking-wider">
-                      0/20 Years
+                      Forever & Always
                     </span>
                     <span className="text-xl font-bold text-rose-600 animate-pulse">
                       loading...
                     </span>
                   </div>
-                  <div className="p-6 bg-gradient-to-br from-rose-50 to-white rounded-2xl border border-rose-100 text-center">
+                  <div className="p-6 bg-linear-to-br from-rose-50 to-white rounded-2xl border border-rose-100 text-center">
                     <p className="text-xs text-slate-400 uppercase tracking-widest mb-2">
                       Times I’ve been grateful for our first meet-up
                     </p>
@@ -337,14 +326,14 @@ export default function ValentineJourneySafe() {
                       can explain.
                     </p>
                     <p className="text-xl font-handwriting text-slate-500 italic">
-                      Slowly but surely, Mama Ona ❤️
+                      Slowly but surely, Snow ❤️
                     </p>
                   </motion.div>
                 </div>
               </div>
 
               <footer className="mt-20 text-center text-slate-300 font-serif italic pb-12">
-                Papa Ona — February 14, 2026
+                Skhumba — February 14, 2026
               </footer>
             </div>
           </motion.section>
